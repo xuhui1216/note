@@ -48,15 +48,17 @@ $$
 $$
 上式矢量形式为：
 $$
-\textbf{f}-\frac{1}{p}\nabla p=0\\
+\textbf{f}-\frac{1}{\rho}\nabla p=0\\
 \nabla\equiv \textbf{i}\frac{\partial}{\partial x}+\textbf{j}\frac{\partial}{\partial y}+\textbf{k}\frac{\partial}{\partial z}
 $$
+
+
 **流体平衡微分方程综合式**：
 $$
 dp=\rho(\textbf{f} \cdot d\textbf{r})
 $$
 
-对于不可压缩均质流体($\rho=const)$,(3)式右边必是某一函数$W(x,y,z)$的全微分，即
+对于不可压缩均质流体($\rho=const)$,(8)式右边必是某一函数$W(x,y,z)$的全微分，即
 $$
 dW=Xdx+Ydy+Zdz
 $$
@@ -113,7 +115,7 @@ $z$为**位置水头**，$\frac{p}{\rho g}$为**压强水头**，$z+\frac{p}{\rh
 
 ## 2.4 作用在平面上的液体总压力
 
-**静压强分布图**是根据液体静力学基本方程和流体静压强的两个特性，绘出的受压面上哥带你的静压强大小及方向的图形。
+**静压强分布图**是根据液体静力学基本方程和流体静压强的两个特性，绘出的受压面上各点的静压强大小及方向的图形。
 
 静止液体作用于任意形状平面上的总压力等于该平面的面积与其形心点静压强的乘积。
 $$
@@ -176,7 +178,7 @@ $$
 
 **过流断面**：与流动方向正交的流管的横断面为**过流断面**
 
-**元流管**：过流断面为面积委员的流管，其中的流动称为**元流**。
+**元流管**：过流断面为面积微元的流管，其中的流动称为**元流**。
 
 **总流**：过流断面为有限面积的流管中的流动叫**总流**
 
@@ -319,7 +321,7 @@ $$
 - 流动必须是恒定流，且流体不可压缩
 - 作用于流体上的质量力只有重力
 - 两断面应在渐变流段中
-- 两端吗间没有能量的输入或输出，没有流量的流入或流出
+- 两端面间没有能量的输入或输出，没有流量的流入或流出
 
 将水头线的斜率称为**水力坡度**：
 $$
@@ -471,7 +473,7 @@ $$
 
 ## 5.3 卡门涡街
 
-**卡门涡街**：当恒定流绕过某些物体时，在一定条件下，物体两侧周期性地脱落出旋涡，使物体后面形成旋转方向相反、并有规则交错排列的双列线涡。开始时，这两列线涡分别保持自身的运动奇纳金，接着它们互相干扰，互相吸引形成涡街。
+**卡门涡街**：当恒定流绕过某些物体时，在一定条件下，物体两侧周期性地脱落出旋涡，使物体后面形成旋转方向相反、并有规则交错排列的双列线涡。开始时，这两列线涡分别保持自身的运动前进，接着它们互相干扰，互相吸引形成涡街。
 
 形成于雷诺数$Re=\frac{Ul}{\nu}$有关，U为来流速度，l为物体的特征长度（圆柱体为直径d），$\nu$为流体运动粘滞系数。
 
@@ -726,3 +728,286 @@ $v_*=\sqrt{\frac{\tau_0}{\rho}}$为常数
 $$
 \delta_0=11.6\frac{\nu}{v_*}=11.6\frac{\nu}{v\sqrt{\frac{\lambda}{8}}}=\frac{32.8d}{Re\sqrt{\lambda}}
 $$
+
+阻力速度：
+$$
+v_*=\sqrt{\frac{\tau_0}{\rho}}
+$$
+
+
+## 6.6 紊流沿程损失的分析与计算
+
+### 尼古拉兹实验
+
+简化模型——**人工粗糙**，经过筛选的均匀砂砾紧密贴在管道内壁上，可用砂砾的突起高度（砂砾直径）$k_s$来表示壁面的粗糙，称为**绝对粗糙度**，$k_s/d$为**相对粗糙度**
+$$
+\lambda=f(Re,k_s/d)
+$$
+由公式69得：
+$$
+\lambda=\frac{d}{l}\frac{2g}{v^2}h_f
+$$
+沿程阻力分为5个阻力区：
+
+- 层流区：$\lambda=\frac{64}{Re}$（$Re<2000$）
+- 临界区：$2000<Re<4000$，$\lambda$仅随$Re$变化，与相对粗糙度无关
+- 紊流光滑区：$Re>4000$，$\lambda$仅随$Re$变化，与相对粗糙度无关，随着$Re$的加大，$ks/d$大的管道，实验点在$Re$较低时，便偏离了光滑区曲线。$ks/d$小的管道，实验点在$Re$较大时偏离了光滑区曲线。
+- 紊流过渡区：$\lambda$既与$Re$有关，又与$k_s/d$有关
+- 紊流粗糙区：$\lambda$仅与$k_s/d$有关，与$Re$无关，又称**阻力平方区**
+
+<img src="C:\Users\xh011\AppData\Roaming\Typora\typora-user-images\image-20210622130759274.png" alt="image-20210622130759274" style="zoom:33%;" />
+
+由公式（100），得粘性底层厚度：
+$$
+\delta=11.6\frac{\nu}{v_*}\\\frac{\delta}{k_s}=11.6\frac{\nu}{v_*k_s}=11.6\frac{1}{Re_*}
+$$
+粗糙雷诺数：$Re_*=\frac{v_*k_s}{\nu}$
+
+判别标准：
+$$
+紊流光滑区 \qquad Re_*\leq5 \quad 或\quad \frac{k_s}{\delta}\leq 0.4\\紊流过渡区 \qquad 5<Re_*\leq70 \quad 或\quad 0.4<\frac{k_s}{\delta}\leq 6\\紊流粗糙区 \qquad Re_*>70 \quad 或\quad \frac{k_s}{\delta}>6
+$$
+半经验公式：
+
+1. 紊流光滑区
+
+   1. 流速分布：
+      $$
+      \frac{u}{v_*}=5.75lg\frac{v_*y}{\nu}+5.5\\\frac{u}{u_{max}}=(\frac{y}{r_0})^n
+      $$
+      <img src="C:\Users\xh011\AppData\Roaming\Typora\typora-user-images\image-20210622132704910.png" alt="image-20210622132704910" style="zoom:50%;" />
+      
+   2. 断面平均流速：
+     $$
+     v=v_*5.75lg\frac{v_*r_0}{\nu}+1.75
+     $$
+     
+   3. $\lambda$的半经验公式：
+     $$
+     \frac{1}{\sqrt{\lambda}}=2lg(Re\sqrt{\lambda})-0.8\\\frac{1}{\sqrt{\lambda}}=2lg\frac{Re\sqrt{\lambda}}{2.51}
+     $$
+   
+2. 紊流粗糙区：
+  
+  1. 流速分布：
+     $$
+     \frac{u}{v_*}=5.75ln\frac{y}{k_s}+8.48
+     $$
+     
+  2. 断面平均流速：
+     $$
+     \frac{v}{v_*}=5.75lg\frac{r_0}{k_s}+4.75
+     $$
+     
+  3. $\lambda$半经验公式：
+     $$
+     \frac{1}{\sqrt{\lambda}}=2lg\frac{r_0}{k_s}+1.74\\\frac{1}{\sqrt{\lambda}}=2lg\frac{3.7d}{k_s}
+     $$
+  
+  
+
+**当量粗糙度**：和工业管道的粗糙区$\lambda$值相等的同直径尼古拉兹粗糙管的粗糙突起高度
+
+柯列勃洛克，适用于工业管道紊流过渡区的$\lambda$计算公式：
+$$
+\frac{1}{\sqrt{\lambda}}=-2lg(\frac{k_s}{3.7d}+\frac{2.51}{Re\sqrt{\lambda}})
+$$
+工业管道紊流阻力区划分标准：
+$$
+紊流光滑区 \qquad Re_*\leq0.3 \quad 或\quad \frac{k_s}{\delta}\leq 0.025\\紊流过渡区 \qquad 0.3<Re_*\leq70 \quad 或\quad 0.025<\frac{k_s}{\delta}\leq 6\\紊流粗糙区 \qquad Re_*>70 \quad 或\quad \frac{k_s}{\delta}>6
+$$
+ 紊流沿程阻力系数经验公式：
+
+1.  布拉休斯公式：（紊流光滑区，$Re<10^5$）
+   $$
+   \lambda=\frac{0.3164}{Re^0.025}
+   $$
+   
+2.  希弗林松公式：（紊流粗糙区）
+   $$
+   \lambda=0.11(\frac{k_s}{d})^0.25
+   $$
+   
+3.  阿里特苏里公式：（适用于紊流三个区）
+   $$
+   \lambda=0.11(\frac{k_s}{d}+\frac{68}{Re})^{0.25}
+   $$
+   
+4.  舍维列夫公式（旧钢管和旧铸铁管）
+   紊流过渡区
+   $$
+   \lambda=\frac{0.0179}{d^{0.3}}(1+\frac{0.867}{v})^{0.3}
+   $$
+   紊流粗糙区
+   $$
+   \lambda=\frac{0.021}{d^{0.3}}
+   $$
+   
+5.  谢才公式
+   $$
+   v=C\sqrt{RJ}
+   $$
+   R为水力半径，J为水力坡度，C为谢才系数
+   $$
+   C=\sqrt{\frac{8g}{\lambda}}
+   $$
+   C的确定：
+   （1）曼宁公式
+   $$
+   C=\frac{1}{n}R^{1/6}
+   $$
+   （2）巴甫洛夫斯基公式
+   $$
+   C=\frac{1}{n}R^y
+   $$
+
+**当量直径**：和非圆形管道的水力半径相等的圆管直径称为该非圆形管道的**当量直径**，
+$$
+d_e=4R
+$$
+
+   
+
+##    6.7 管流和明流的局部损失
+
+产生局部损失原因：
+
+- 主流与边壁分离，形成旋涡区（主要原因）
+- 流动方向的变化形成**二次流**
+
+$$
+h_j=\zeta \frac{v^2}{2g}
+$$
+
+突扩管局部阻力系数：
+$$
+\zeta_1=(1-\frac{A_1}{A_2})^2\\\zeta_2=(\frac{A_2}{A_1}-1)^2
+$$
+
+
+突然缩小：
+$$
+\zeta=0.5(1-\frac{A_2}{A_1})
+$$
+
+# 第七章 量纲分析和相似原理
+
+## 7.1 量纲和谐原理
+
+量纲又称为**因次**
+
+量纲公式
+$$
+dim \; x=L^\alpha T^\beta M^\gamma
+$$
+无量量纲也称**纯数**
+
+## 7.2 量纲分析法
+
+瑞利法：
+
+若某一物理过程与n个物理量有关，
+$$
+f(x_1,x_2,\cdots,x_n)=0
+$$
+则某个物理量$x_i$可以表示为其他物理量的指数乘积形式
+$$
+x_i=kx_1^ax_2^b\cdots x_{n-1}^m\\dim\;x_i=k\cdot dim(x_1^ax_2^b\cdots x_{n-1}^m)
+$$
+$\pi$定理：
+
+若某一物理过程包含有n个物理量，可表示为如下函数关系：
+$$
+f(x_1,x_2,\cdots,x_n)=0
+$$
+其中有m个基本物理量，则该物理过程可由n个物理量所构成的n-m个无量纲组合量的关系式来描述
+$$
+F(\pi_1,\pi_2,\cdots,\pi_{n-m})=0
+$$
+常用的三个物理量：$\rho,d,v$
+
+## 7.3 流动相似原理
+
+- 几何相似
+- 运动相似
+- 动力相似：表征为流体相应点上的力多边形相似
+- 初始条件和边界条件的相似
+
+惯性力比尺：
+$$
+\lambda_I=\frac{I_p}{I_m}=\lambda_{\rho}\lambda_l^3\lambda_a=\lambda_{\rho}\lambda_l^2\lambda_v^2
+$$
+牛顿数：
+$$
+Ne=\frac{F}{\rho l^2v^2}
+$$
+两个流动相似，牛顿数应相等
+
+雷诺准则：当粘滞力作用为主时，
+
+$$
+\lambda_F=\lambda_T=\frac{T_p}{T_m}=\frac{\mu_pA_p\frac{du_p}{dy_p}}{\mu_mA_m\frac{du_m}{dy_m}}=\lambda_{\rho}\lambda_v\lambda_l\lambda_v\\\lambda_{\rho}\lambda_l^2\lambda_v^2=\lambda_{\rho}\lambda_v\lambda_l\lambda_v\\\frac{\lambda_v\lambda_l}{\lambda_v}=1\\\frac{v_pl_p}{\nu_p}=\frac{v_ml_m}{\nu_m}
+$$
+
+弗劳德准则：(重力作用为主)
+$$
+\frac{\lambda_v}{\sqrt{\lambda_l\lambda_g}}=1\\Fr=\frac{v}{\sqrt{lg}}
+$$
+欧拉准则（流体动压力）
+$$
+\frac{\lambda_p}{\lambda_{\rho}\lambda_l^2}=1\\Eu=\frac{p}{\rho v^2}
+$$
+明槽流动一般都按弗劳德准则设计，管道流动雷诺数较小时按雷诺准则进行设计，较大时保证流动几何相似即可保证动力相似。
+
+# 第8章 边界层理论基础及绕流运动
+
+## 8.1 边界层的基本概念
+
+**边界层**：固壁附近存在较大流速梯度的流动薄层（附面层）
+
+边界层外缘：在纵向流速与层外流速相差1%的地方，即$u_x=99%u_0$
+
+边界层内雷诺数：
+$$
+Re_x=\frac{U_0x}{\nu}
+$$
+**转捩点**：层流边界层转换为紊流边界层的点($x=x_c$)
+
+一般取$Re_c=5\times 10^5$
+
+- 边界层位移厚度$\delta_1$，又称排挤厚度：
+  $$
+  \rho u_0\delta_1=\int_0^{\delta}\rho u_0dy-\int_0^{\delta}\rho u_xdy
+  $$
+
+- 边界层动量损失厚度$\delta_2$
+
+- 边界层形状系数$H=\frac{\delta_1}{\delta_2}$
+
+- 边界层能量损失厚度$\delta_3$
+  $$
+  \rho u_0\delta_3\cdot u_0^2=u_0^2\int_0^\delta\rho u_xdy-\int_0^\delta\rho u_xu_x^2dy
+  $$
+## 8.2 边界层微分方程
+
+边界微分方程/普朗特边界层方程式：
+$$
+u_x\frac{\partial u_x}{\partial x}+u_y\frac{\partial u_x}{\partial y}=-\frac{1}{\rho}\frac{\partial p}{\partial x}+\frac{\mu}{\rho}\frac{\partial^2u_x}{\partial y^2}\\\frac{\partial u_x}{\partial x}+\frac{\partial u_y}{\partial y}=0
+$$
+
+## 8.5 边界层的分离现象
+
+边界层分离现象：流体质点在逆压梯度作用下发生反向回流，与远离边壁继续前进的流体形成旋涡，使得边界层与边壁分离。边界层厚度显著增加。（边界层的分离只能发生在断面逐渐扩大，压强沿程增加的区域，即减速增压段）
+
+
+
+  
+
+  
+
+  
+
+
+
+
+
